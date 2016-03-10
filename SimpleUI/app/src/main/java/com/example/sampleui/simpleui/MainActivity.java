@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
     EditText editText;
     CheckBox hideCheckBox;
     ListView listView;
+    Spinner spinner;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
         editText = (EditText) findViewById(R.id.editText);
         hideCheckBox = (CheckBox) findViewById(R.id.checkBox);
         listView = (ListView) findViewById(R.id.listView);
+        spinner = (Spinner) findViewById(R.id.spinner);
 
         sp = getSharedPreferences("setting", Context.MODE_PRIVATE);//取得setting內容
         editor = sp.edit();//在白紙上寫字
@@ -79,6 +82,7 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
         });
 
         setListView();//設定listview
+        setSpinner();
     }
 
     private void setListView()
@@ -88,6 +92,12 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
         listView.setAdapter(adapter);
     }
 
+    private void setSpinner()
+    {
+        String[] data = getResources().getStringArray(R.array.storeInfo);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, data);
+        spinner.setAdapter(adapter);
+    }
 
     public void submit(View view)
     {

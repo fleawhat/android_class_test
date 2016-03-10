@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="storeInfo">
+        <item>NTU</item>
+    <item>NTU1</item>
+    <item>NTU2</item>
+    <item>NTU3</item>
+    <item>NTU4</item>
+    </string-array>
+
+
+
+</resources>
