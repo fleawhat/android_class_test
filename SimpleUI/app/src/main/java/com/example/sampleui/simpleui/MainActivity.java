@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
 
     private void setListView()
     {
-        String[] data = {"1", "2", "3", "4", "5"};
+        String[] data = Utils.readFile(this, "history.txt").split("\n");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
         listView.setAdapter(adapter);
     }
@@ -94,6 +94,8 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
         //Toast.makeText(this, "Hello World", Toast.LENGTH_LONG).show();
         //textView.setText("Test");
         String text = editText.getText().toString();
+        Utils.writeFile(this, "history.txt", text + '\n');
+
         if (hideCheckBox.isChecked()) {
             Toast.makeText(this, text, Toast.LENGTH_LONG).show();
 
