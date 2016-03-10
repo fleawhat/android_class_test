@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
             }
         });
 
-        setListView();//設定listview
-        setSpinner();
+        setListView();//呼叫listview
+        setSpinner();//呼叫spinner
     }
 
     private void setListView()
