@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
     TextView textView;
     EditText editText;
     CheckBox hideCheckBox;
+    ListView listView;
     SharedPreferences sp;
     SharedPreferences.Editor editor;
 
@@ -27,9 +30,10 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
         setContentView(R.layout.activity_main); // 指定這個元件使用的畫面配置資源
 
 
-        textView = (TextView)findViewById(R.id.textView);
-        editText = (EditText)findViewById(R.id.editText);
-        hideCheckBox = (CheckBox)findViewById(R.id.checkBox);
+        textView = (TextView) findViewById(R.id.textView);
+        editText = (EditText) findViewById(R.id.editText);
+        hideCheckBox = (CheckBox) findViewById(R.id.checkBox);
+        listView = (ListView) findViewById(R.id.listView);
 
         sp = getSharedPreferences("setting", Context.MODE_PRIVATE);//取得setting內容
         editor = sp.edit();//在白紙上寫字
@@ -62,7 +66,7 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
             }
         });
 
-        hideCheckBox =  (CheckBox)findViewById(R.id.checkBox);
+        hideCheckBox = (CheckBox) findViewById(R.id.checkBox);
 
         hideCheckBox.setChecked(sp.getBoolean("hideCheckBox", false));//儲存上個checkbox的狀態
 
@@ -73,7 +77,18 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
                 editor.apply();
             }
         });
+
+        setListView();//設定listview
     }
+
+    private void setListView()
+    {
+        String[] data = {"1", "2", "3", "4", "5"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, data);
+        listView.setAdapter(adapter);
+    }
+
+
     public void submit(View view)
     {
         //Toast.makeText(this, "Hello World", Toast.LENGTH_LONG).show();
