@@ -10,14 +10,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity { //繼承自Activity類別
     TextView textView;
     EditText editText;
     CheckBox hideCheckBox;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected void onCreate(Bundle savedInstanceState) { //覆寫Activity類別的onCreate方法
+        super.onCreate(savedInstanceState); // 一定要加入呼叫父類別onCreate方法的敘述
+        setContentView(R.layout.activity_main); // 指定這個元件使用的畫面配置資源
         textView = (TextView)findViewById(R.id.textView);
         editText = (EditText)findViewById(R.id.editText);
         hideCheckBox = (CheckBox)findViewById(R.id.checkBox);
