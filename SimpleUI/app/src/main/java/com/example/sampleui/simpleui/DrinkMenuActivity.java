@@ -1,11 +1,9 @@
 package com.example.sampleui.simpleui;
 
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class DrinkMenuActivity extends AppCompatActivity {
 
@@ -13,17 +11,17 @@ public class DrinkMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink_menu);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
+    public void add(View view)
+    {
+        Button button = (Button) view;
+        int number = Integer.parseInt(button.getText().toString());//string轉成int(轉成非object)
+        number ++;//number = number + 1
+        button.setText(String.valueOf(number));//轉回object
 
+    }
+    public void cancel(View view)//結束這個activity，回到main activity
+    {
+        finish();
+    }
 }

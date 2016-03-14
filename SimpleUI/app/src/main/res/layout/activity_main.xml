@@ -73,7 +73,8 @@
         android:layout_below="@+id/editText"
         android:layout_toLeftOf="@+id/button"
         android:layout_toStartOf="@+id/button"
-        android:layout_above="@+id/spinner" />
+        android:layout_above="@+id/spinner"
+        android:onClick="goToMenu" />
 
 
 </RelativeLayout>

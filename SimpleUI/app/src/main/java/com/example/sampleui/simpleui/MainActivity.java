@@ -1,6 +1,7 @@
 package com.example.sampleui.simpleui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -120,4 +121,16 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
         textView.setText(text);
     }
 
+    public void goToMenu(View view)
+    {
+        Intent intent = new Intent();//按alt+enter可以import紅字
+        intent.setClass(this, DrinkMenuActivity.class);
+
+        startActivity(intent);
+    }
+
 }
+
+
+
+
