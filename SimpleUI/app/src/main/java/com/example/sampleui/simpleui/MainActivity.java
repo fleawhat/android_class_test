@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -19,6 +20,9 @@ import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity { //繼承自Activity類別
+
+    private static final int REQUEST_CODE_MENU_ACTIVITY = 0;
+
     TextView textView;
     EditText editText;
     CheckBox hideCheckBox;
@@ -126,7 +130,54 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
         Intent intent = new Intent();//按alt+enter可以import紅字
         intent.setClass(this, DrinkMenuActivity.class);
 
-        startActivity(intent);
+        //startActivity(intent);
+        startActivityForResult(intent, REQUEST_CODE_MENU_ACTIVITY);//要求系統回傳結果
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d("debug", "main activity result");
+        
+        if(requestCode == REQUEST_CODE_MENU_ACTIVITY)
+        {
+            if(resultCode == RESULT_OK)
+            {
+                textView.setText(data.getStringExtra("result"));
+            }
+        }
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        Log.d("debug", "main menu onDestroy");
+    }
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Log.d("debug", "main menu onStop");
+    }
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.d("debug", "main menu onStart");
+    }
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Log.d("debug", "drink menu onPause");
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.d("debug", "main menu onResume");
+    }
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        Log.d("debug", "main menu onRestart");
     }
 
 }
