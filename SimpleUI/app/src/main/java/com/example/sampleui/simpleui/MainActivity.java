@@ -32,11 +32,14 @@ public class MainActivity extends AppCompatActivity { //繼承自Activity類別
         setContentView(R.layout.activity_main); // 指定這個元件使用的畫面配置資源
 
 
-        textView = (TextView) findViewById(R.id.textView);
+        textView = (TextView) findViewById(R.id.textView);//跟xml中的元件做連結
         editText = (EditText) findViewById(R.id.editText);
         hideCheckBox = (CheckBox) findViewById(R.id.checkBox);
         listView = (ListView) findViewById(R.id.listView);
         spinner = (Spinner) findViewById(R.id.spinner);
+
+
+        //SharePreferences的功能：儲存應用程式的設定值，方便下次應用程式被啟動時，載入偏好設定，讓應用程式自動回復到前一次設定值
 
         sp = getSharedPreferences("setting", Context.MODE_PRIVATE);//取得setting內容
         editor = sp.edit();//在白紙上寫字
